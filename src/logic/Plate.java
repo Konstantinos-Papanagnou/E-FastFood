@@ -1,12 +1,21 @@
 package logic;
 
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
+
 public class Plate {
+	public static ObservableList<Plate> platesInCart = FXCollections.observableArrayList();
 	private int plateID;
 	private String imagePath;
 	private String plateName;
 	private double price;
 	private String description;
+	private int quantity;
 	
+	
+	public int getQuantity() {
+		return quantity;
+	}
 	public int getPlateID() {
 		return plateID;
 	}
@@ -23,6 +32,9 @@ public class Plate {
 		return description;
 	}
 	
+	public void setQuantity(int quantity) {
+		this.quantity = quantity;
+	}
 	public void setPlateID(int plateID) {
 		this.plateID = plateID;
 	}
