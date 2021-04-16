@@ -2,5 +2,9 @@ https://stackoverflow.com/questions/29707882/javafx-hbox-alignment : JavaFX HBox
 https://stackoverflow.com/questions/40480/is-java-pass-by-reference-or-pass-by-value 
 https://stackoverflow.com/questions/19588029/customize-listview-in-javafx-with-fxml Customize list view (Populate Fields)
 https://www.youtube.com/watch?v=4rVr_VT-4Z4 Custom List View
-
+https://stackoverflow.com/questions/22710053/how-can-i-show-an-image-using-the-imageview-component-in-javafx-and-fxml : Show image Programmatically
+https://www.tutorialspoint.com/how-to-create-a-dialog-in-javafx : Dialog in javafx
+https://docs.oracle.com/javase/8/javafx/api/javafx/scene/control/Dialog.html : Dialog in javafx
+https://stackoverflow.com/questions/29926428/how-do-you-attach-a-listener-to-a-javafx-spinner : Connect a listener to a spinner
+https://www.javatpoint.com/javafx-rotate-transition : rotate animations
 €
