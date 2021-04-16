@@ -165,10 +165,6 @@ public class MainScreenController implements Initializable {
 		});
 		
 		//Manage logo Animation
-		
-		
-		
-		
 		RotateTransition logoRotate = new RotateTransition();  
 		logoRotate.setAxis(Rotate.X_AXIS);  
 		logoRotate.setCycleCount(2);  
