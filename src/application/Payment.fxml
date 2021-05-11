@@ -1,0 +1,105 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.ListView?>
+<?import javafx.scene.control.RadioButton?>
+<?import javafx.scene.control.TextArea?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.VBox?>
+
+
+<AnchorPane prefHeight="637.0" prefWidth="926.0" style="-fx-background-color: #606060;" xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/16">
+   <children>
+      <ListView layoutX="27.0" layoutY="55.0" prefHeight="347.0" prefWidth="335.0" />
+      <VBox layoutX="404.0" layoutY="28.0" prefHeight="496.0" prefWidth="474.0">
+         <children>
+            <Label alignment="BOTTOM_CENTER" prefHeight="30.0" prefWidth="398.0" text="              ΣΤΟΙΧΕΙΑ ΠΕΛΑΤΗ" textFill="WHITE" textOverrun="CENTER_WORD_ELLIPSIS">
+               <VBox.margin>
+                  <Insets />
+               </VBox.margin>
+            </Label>
+            <HBox prefHeight="37.0" prefWidth="470.0">
+               <children>
+                  <Label prefHeight="44.0" prefWidth="114.0" text="Ονοματεπώνυμο" textFill="WHITE" />
+                  <TextField prefHeight="33.0" prefWidth="356.0">
+                     <HBox.margin>
+                        <Insets top="5.0" />
+                     </HBox.margin>
+                  </TextField>
+               </children>
+            </HBox>
+            <HBox prefHeight="37.0" prefWidth="470.0">
+               <children>
+                  <Label prefHeight="44.0" prefWidth="114.0" text="Τηλέφωνο " textFill="WHITE" />
+                  <TextField prefHeight="33.0" prefWidth="356.0">
+                     <HBox.margin>
+                        <Insets top="5.0" />
+                     </HBox.margin>
+                  </TextField>
+               </children>
+            </HBox>
+            <HBox prefHeight="37.0" prefWidth="470.0">
+               <children>
+                  <HBox prefHeight="37.0" prefWidth="470.0">
+                     <children>
+                        <HBox prefHeight="37.0" prefWidth="470.0">
+                           <children>
+                              <Label prefHeight="44.0" prefWidth="114.0" text="Email" textFill="WHITE" />
+                              <TextField prefHeight="33.0" prefWidth="360.0">
+                                 <HBox.margin>
+                                    <Insets top="5.0" />
+                                 </HBox.margin>
+                              </TextField>
+                           </children>
+                        </HBox>
+                     </children>
+                  </HBox>
+               </children>
+            </HBox>
+            <HBox prefHeight="37.0" prefWidth="470.0">
+               <children>
+                  <Label prefHeight="44.0" prefWidth="114.0" text="Διεύθυνση" textFill="WHITE" />
+                  <TextField prefHeight="33.0" prefWidth="357.0">
+                     <HBox.margin>
+                        <Insets top="5.0" />
+                     </HBox.margin>
+                  </TextField>
+               </children>
+            </HBox>
+            <HBox prefHeight="37.0" prefWidth="470.0">
+               <children>
+                  <Label prefHeight="44.0" prefWidth="114.0" text="Όροφος" textFill="WHITE" />
+                  <TextField prefHeight="33.0" prefWidth="357.0">
+                     <HBox.margin>
+                        <Insets top="5.0" />
+                     </HBox.margin>
+                  </TextField>
+               </children>
+            </HBox>
+            <HBox prefHeight="37.0" prefWidth="470.0">
+               <children>
+                  <Label prefHeight="44.0" prefWidth="114.0" text="Κουδούνι" textFill="WHITE" />
+                  <TextField prefHeight="33.0" prefWidth="358.0">
+                     <HBox.margin>
+                        <Insets top="5.0" />
+                     </HBox.margin>
+                  </TextField>
+               </children>
+            </HBox>
+            <TextArea prefHeight="200.0" prefWidth="357.0" promptText="Οδηγίες">
+               <VBox.margin>
+                  <Insets top="5.0" />
+               </VBox.margin>
+            </TextArea>
+         </children>
+      </VBox>
+      <Button layoutX="53.0" layoutY="554.0" mnemonicParsing="false" prefHeight="44.0" prefWidth="335.0" text="ΠΙΣΩ" />
+      <Button layoutX="489.0" layoutY="554.0" mnemonicParsing="false" prefHeight="44.0" prefWidth="398.0" text="ΠΛΗΡΩΜΗ" />
+      <RadioButton layoutX="53.0" layoutY="420.0" mnemonicParsing="false" selected="true" text="Μετρητά" textFill="WHITE" textOverrun="CLIP" />
+      <RadioButton layoutX="159.0" layoutY="420.0" mnemonicParsing="false" text="Πιστωτική/Χρεωστική Κάρτα" textFill="WHITE" />
+   </children>
+</AnchorPane>
