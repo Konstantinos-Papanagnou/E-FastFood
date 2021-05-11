@@ -1,10 +1,19 @@
-https://stackoverflow.com/questions/29707882/javafx-hbox-alignment : JavaFX HBox Alignment
-https://stackoverflow.com/questions/40480/is-java-pass-by-reference-or-pass-by-value 
-https://stackoverflow.com/questions/19588029/customize-listview-in-javafx-with-fxml Customize list view (Populate Fields)
-https://www.youtube.com/watch?v=4rVr_VT-4Z4 Custom List View
-https://stackoverflow.com/questions/22710053/how-can-i-show-an-image-using-the-imageview-component-in-javafx-and-fxml : Show image Programmatically
-https://www.tutorialspoint.com/how-to-create-a-dialog-in-javafx : Dialog in javafx
-https://docs.oracle.com/javase/8/javafx/api/javafx/scene/control/Dialog.html : Dialog in javafx
-https://stackoverflow.com/questions/29926428/how-do-you-attach-a-listener-to-a-javafx-spinner : Connect a listener to a spinner
-https://www.javatpoint.com/javafx-rotate-transition : rotate animations
 €
+
+JavaFX HBox Alignment. (2015, April 17). Stack Overflow. https://stackoverflow.com/questions/29707882/javafx-hbox-alignment
+
+Is Java “pass-by-reference” or “pass-by-value”? (2008, September 2). Stack Overflow. https://stackoverflow.com/questions/40480/is-java-pass-by-reference-or-pass-by-value
+
+Customize ListView in JavaFX with FXML. (2013, October 25). Stack Overflow. https://stackoverflow.com/questions/19588029/customize-listview-in-javafx-with-fxml
+
+KeepToo. (2020, September 4). How to create a custom list in JavaFX. YouTube. https://www.youtube.com/watch?v=4rVr_VT-4Z4
+
+How can I show an image using the ImageView component in javafx and fxml? (2014, March 28). Stack Overflow. https://stackoverflow.com/questions/22710053/how-can-i-show-an-image-using-the-imageview-component-in-javafx-and-fxml
+
+How to create a Dialog in JavaFX? (n.d.). Tutorials Point. https://www.tutorialspoint.com/how-to-create-a-dialog-in-javafx
+
+Dialog (JavaFX 8). (2015, February 10). Oracle Documentation. https://docs.oracle.com/javase/8/javafx/api/javafx/scene/control/Dialog.html
+
+How do you attach a listener to a JavaFX spinner? (2015, April 28). Stack Overflow. https://stackoverflow.com/questions/29926428/how-do-you-attach-a-listener-to-a-javafx-spinner
+
+javafx Rotate Transition - javatpoint. (n.d.). Www.Javatpoint.Com. https://www.javatpoint.com/javafx-rotate-transition
