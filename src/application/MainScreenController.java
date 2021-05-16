@@ -1,7 +1,9 @@
 package application;
 
 import java.net.URL;
+import java.util.HashSet;
 import java.util.ResourceBundle;
+import java.util.Set;
 
 import javafx.animation.RotateTransition;
 import javafx.beans.value.ChangeListener;
@@ -11,20 +13,26 @@ import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.geometry.Insets;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.ButtonBar.ButtonData;
 import javafx.scene.control.ButtonType;
+import javafx.scene.control.ComboBox;
 import javafx.scene.control.Dialog;
 import javafx.scene.control.Label;
 import javafx.scene.layout.HBox;
 import javafx.scene.transform.Rotate;
+import javafx.stage.Stage;
 import javafx.util.Duration;
 import logic.Plate;
 import javafx.scene.control.ListView;
 import javafx.scene.control.Spinner;
 import javafx.scene.control.SpinnerValueFactory;
+import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
 
@@ -39,18 +47,22 @@ public class MainScreenController implements Initializable {
     @FXML private Label finalPriceLbl;
     @FXML private Spinner<Integer> quantitySpinner;
     @FXML private Button addToCartBtn;
+    @FXML private ComboBox<String> filterBox;
 
 	private Plate selected;
     private final int defaultValue = 1;
     private final SpinnerValueFactory<Integer> values = new SpinnerValueFactory.IntegerSpinnerValueFactory(1,500, defaultValue);
-    
-
+   
+    //private FilterLogic filterLogic = new FilterLogic();
 	@Override
 	public void initialize(URL location, ResourceBundle resources) {
 		manageAnimations();
 		setupSpinner();
 		//Setup list and populate with whatever the database holds
-		setupList(fetchData());
+		ObservableList<Plate> allPlates = fetchData(); 
+		setupList(allPlates);
+		//Setup filter.
+		setupFilter(allPlates);
 		
 		//Manage Button Click
 		addToCartBtn.setOnAction(new EventHandler<ActionEvent>() {
@@ -77,10 +89,69 @@ public class MainScreenController implements Initializable {
 
 	}
 	
+	@FXML
+	private void finalizeOrderClick(ActionEvent e) {
+		try {
+			Stage window = new Stage();
+			Parent root = FXMLLoader.load(getClass().getResource("Payment.fxml"));
+			window.getIcons().add(new Image("logo black.png"));
+			window.setTitle("The Eater's Club");
+			Scene scene = new Scene(root);
+			scene.getStylesheets().add(getClass().getResource("application.css").toExternalForm());
+			window.setResizable(false);
+			window.setScene(scene);
+			window.showAndWait();
+		} catch(Exception e1) {
+			e1.printStackTrace();
+			System.out.println(e1.getMessage());
+		}
+	}
+	
+	private void setupFilter(ObservableList<Plate> allPlates) {
+		Set<String> categories = getFilters(allPlates);
+		ObservableList<String> options = 
+			    FXCollections.observableArrayList(
+			        categories
+			    );
+		filterBox.getItems().addAll(options);
+		filterBox.getSelectionModel().selectFirst();
+		filterBox.setOnAction(new EventHandler<ActionEvent>() {
+
+			@Override
+			public void handle(ActionEvent event) {
+				listView.getItems().clear();
+				if(filterBox.getSelectionModel().getSelectedIndex() == 0) {
+					setupAdapter(fetchData());
+					return;
+				}
+				setupAdapter(filter(filterBox.getSelectionModel().getSelectedItem()));
+				
+			}
+			
+		});
+	}
+	
+	private ObservableList<Plate> filter(String category) {
+		ObservableList<Plate> allPlates = fetchData();
+		ObservableList<Plate> filtered = FXCollections.observableArrayList();
+		for(Plate plate : allPlates) {
+			if(plate.getCategory().equals(category))
+				filtered.add(plate);
+		}
+		return filtered;
+	}
+	
+	private Set<String> getFilters(ObservableList<Plate> allPlates) {
+		Set<String> map = new HashSet<String>(); 
+		map.add("A - Όλες οι κατηγορίες");
+		for(Plate plate : allPlates) {
+			map.add(plate.getCategory());
+		}
+		return map;
+	}
+	
 	private void setupList(ObservableList<Plate> plates) {
-		//Set and Populate ListView
-		listView.setCellFactory((lv) -> { return new MainListViewItemCell();});
-		listView.setItems(plates);
+		setupAdapter(plates);
 		listView.getSelectionModel().selectedItemProperty().addListener(new ChangeListener<Plate>() {
 			public void changed(ObservableValue<? extends Plate> ov, final Plate oldValue, final Plate newValue) {
 				selectedPlateLbl.setText("Plate: " + newValue.getPlateName());
@@ -92,11 +163,17 @@ public class MainScreenController implements Initializable {
 		});
 	}
 	
+	private void setupAdapter(ObservableList<Plate> plates) {
+		//Set and Populate ListView
+		listView.setCellFactory((lv) -> { return new MainListViewItemCell();});
+		listView.setItems(plates);
+	}
+	
 	private ObservableList<Plate> fetchData() {
 		ObservableList<Plate> plates = FXCollections.observableArrayList();
-		plates.add(new Plate("Pizza Fan", "2 Κανονικές Πίτσες & 1 choco krats", 12.00, "images/pizzafan.png"));
-		plates.add(new Plate("The Big Bad Wolf", "8 Καλαμάκια της επιλογής σας με πιτάκια", 10.99, "images/The Big Bad Wolf.png"));
-		plates.add(new Plate("Goody's Burger House", "2 Extreme Deluxe", 11.30, "images/Goody Burger House.png"));
+		plates.add(new Plate("Pizza Fan", "2 Κανονικές Πίτσες & 1 choco krats", 12.00, "images/pizzafan.png", "Κυρίως"));
+		plates.add(new Plate("The Big Bad Wolf", "8 Καλαμάκια της επιλογής σας με πιτάκια", 10.99, "images/The Big Bad Wolf.png", "Ορεκτικό"));
+		plates.add(new Plate("Goody's Burger House", "2 Extreme Deluxe", 11.30, "images/Goody Burger House.png", "Κυρίως"));
 		return plates;
 	}
 	

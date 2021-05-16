@@ -146,7 +146,7 @@ public class MainListViewItemCell extends ListCell<Plate>{
 		PlateImageView.setImage(new Image(file.toURI().toString()));
 		PlateNameLbl.setText(plate.getPlateName());
 		PlatePriceLbl.setText(String.format("%.2f",plate.getPrice()) + "€");
-		PlateDescriptionLbl.setText(plate.Description());
+		PlateDescriptionLbl.setText(plate.getDescription());
 		setGraphic(root);
 	}
 

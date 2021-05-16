@@ -11,7 +11,7 @@ public class Plate {
 	private double price;
 	private String description;
 	private int quantity;
-	
+	private String category;
 	
 	public int getQuantity() {
 		return quantity;
@@ -28,8 +28,11 @@ public class Plate {
 	public double getPrice() {
 		return price;
 	}
-	public String Description() {
+	public String getDescription() {
 		return description;
+	}
+	public String getCategory() {
+		return category;
 	}
 	
 	public void setQuantity(int quantity) {
@@ -50,11 +53,15 @@ public class Plate {
 	public void setDescription(String description) {
 		this.description = description;
 	}
+	public void setCategory(String category) {
+		this.category = category;
+	}
 	
-	public Plate(String plateName, String description, double price, String imagePath) {
+	public Plate(String plateName, String description, double price, String imagePath, String category) {
 		this.plateName = plateName;
 		this.description = description;
 		this.price = price;
 		this.imagePath = imagePath;
+		this.category = category;
 	}
 }
