@@ -28,6 +28,7 @@ import javafx.scene.layout.HBox;
 import javafx.scene.transform.Rotate;
 import javafx.stage.Stage;
 import javafx.util.Duration;
+import logic.DatabaseHandler;
 import logic.Plate;
 import javafx.scene.control.ListView;
 import javafx.scene.control.Spinner;
@@ -52,8 +53,7 @@ public class MainScreenController implements Initializable {
 	private Plate selected;
     private final int defaultValue = 1;
     private final SpinnerValueFactory<Integer> values = new SpinnerValueFactory.IntegerSpinnerValueFactory(1,500, defaultValue);
-   
-    //private FilterLogic filterLogic = new FilterLogic();
+    private DatabaseHandler database = new DatabaseHandler();
 	@Override
 	public void initialize(URL location, ResourceBundle resources) {
 		manageAnimations();
@@ -94,7 +94,7 @@ public class MainScreenController implements Initializable {
 		try {
 			Stage window = new Stage();
 			Parent root = FXMLLoader.load(getClass().getResource("Payment.fxml"));
-			window.getIcons().add(new Image("logo black.png"));
+			window.getIcons().add(new Image("file:./src/img/logo black.png"));
 			window.setTitle("The Eater's Club");
 			Scene scene = new Scene(root);
 			scene.getStylesheets().add(getClass().getResource("application.css").toExternalForm());
@@ -143,7 +143,7 @@ public class MainScreenController implements Initializable {
 	
 	private Set<String> getFilters(ObservableList<Plate> allPlates) {
 		Set<String> map = new HashSet<String>(); 
-		map.add("A - Όλες οι κατηγορίες");
+		map.add("Α-Όλες οι κατηγορίες");
 		for(Plate plate : allPlates) {
 			map.add(plate.getCategory());
 		}
@@ -170,11 +170,7 @@ public class MainScreenController implements Initializable {
 	}
 	
 	private ObservableList<Plate> fetchData() {
-		ObservableList<Plate> plates = FXCollections.observableArrayList();
-		plates.add(new Plate("Pizza Fan", "2 Κανονικές Πίτσες & 1 choco krats", 12.00, "images/pizzafan.png", "Κυρίως"));
-		plates.add(new Plate("The Big Bad Wolf", "8 Καλαμάκια της επιλογής σας με πιτάκια", 10.99, "images/The Big Bad Wolf.png", "Ορεκτικό"));
-		plates.add(new Plate("Goody's Burger House", "2 Extreme Deluxe", 11.30, "images/Goody Burger House.png", "Κυρίως"));
-		return plates;
+		return FXCollections.observableArrayList(database.getAllPlates());
 	}
 	
 	private void setupSpinner() {
