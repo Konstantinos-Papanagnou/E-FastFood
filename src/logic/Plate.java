@@ -64,4 +64,12 @@ public class Plate {
 		this.imagePath = imagePath;
 		this.category = category;
 	}
+	public Plate(int plateID, String plateName, String description, double price, String imagePath, String category) {
+		this.plateID = plateID;
+		this.plateName = plateName;
+		this.description = description;
+		this.price = price;
+		this.imagePath = imagePath;
+		this.category = category;
+	}
 }
