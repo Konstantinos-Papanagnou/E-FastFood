@@ -1,46 +1,52 @@
 package logic;
 
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
 import java.util.ArrayList;
 
 public class DatabaseHandler {
 	//To-Do Connect the database;
-	
-	public final String DatabaseLocation = "efood.db";
-	public final String PlateTable = "Plate";
-	public final String PlateIDField = "PlateID";
+	Connection connection;
+	public final String DatabaseLocation = "Plates.db";
+	public final String PlateTable = "Plates";
+	public final String PlateIDField = "ID";
 	public final String PlateNameField = "Name";
 	public final String PlateDescriptionField = "Description";
+	public final String PlateCategoryField = "Category";
 	public final String PlatePriceField = "Price";
-	public final String PlateImagePathField = "Image";
+	public final String PlateImagePathField = "ImagePath";
 	
 	public DatabaseHandler() {
-		CreateTables();
-	}
-	
-	private void CreateTables() {
-		//Creating tables.
-		String PlateQuery = "CREATE TABLE IF NOT EXISTS " + PlateTable + "( " + PlateIDField + " INTEGER PRIMARY KEY AYTOINCREMENT, "
-				+ PlateNameField + " STRING NOT NULL, " + PlateDescriptionField + " STRING, " + PlatePriceField + " REAL NOT NULL, "
-						+ PlateImagePathField + " STRING NOT NULL) ";
-		InsertItem("Burger","Juicy Burger",5.99,"images/burger.jpg");
-		//To-Do Insert more Dummy Data
-	}
-	
-	public void InsertItem(String plateName, String plateDesc, double price, String imagePath) {
-		String InsertQuery = "INSERT INTO " + PlateTable + "(" + PlateNameField + "," + PlateDescriptionField + "," + PlatePriceField + "," + PlateImagePathField + ") VALUES (" + 
-				"  '" + plateName+ "'," + 
-				"  '" + plateDesc + "'," + 
-				"  '" + price + "'," + 
-				"  '" + imagePath + "'," + 
-				"); ";
-		
-		//TO-DO complete insert statement
+		try
+		{
+			Class.forName("org.sqlite.JDBC");
+			connection = DriverManager.getConnection("jdbc:sqlite:Plates.db");
+		}
+		catch (Exception e)
+		{
+			e.printStackTrace();
+		}
 	}
 	
 	public ArrayList<Plate> getAllPlates(){
-		String SelectQuery = "SELECT * FROM " + PlateTable + ";";
-		//To-Do Complete Select statement
-		return new ArrayList<Plate>();
+		String SelectQuery = "SELECT * FROM " + PlateTable;
+		PreparedStatement preped = null;
+		ResultSet res = null;
+		ArrayList<Plate> plates = new ArrayList<Plate>();
+		
+		try {
+			preped = connection.prepareStatement(SelectQuery);
+			res = preped.executeQuery();
+			while(res.next()) {
+				plates.add(new Plate(res.getInt(PlateIDField), res.getString(PlateNameField), res.getString(PlateDescriptionField), res.getDouble(PlatePriceField), res.getString(PlateImagePathField), res.getString(PlateCategoryField)));
+			}
+			return plates;
+		}catch(Exception e){
+			e.printStackTrace();
+			return null;
+		}
 	}
 	
 	
