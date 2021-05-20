@@ -58,7 +58,7 @@ public class MainListViewItemCell extends ListCell<Plate>{
     	cart.setFitWidth(21);
     	cart.setPickOnBounds(true);
     	cart.setPreserveRatio(true);
-    	File file = new File("src/cardIcon.png");
+    	File file = new File("./src/img/cartIcon.png");
     	cart.setImage(new Image(file.toURI().toString()));
     	HBox.setMargin(cart, new Insets(2,20,0,0)); //top - right - down - left
     	return cart;
