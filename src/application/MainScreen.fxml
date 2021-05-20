@@ -20,7 +20,7 @@
          <children>
             <ImageView fx:id="logoView" fitHeight="164.0" fitWidth="200.0" pickOnBounds="true" preserveRatio="true">
                <image>
-                  <Image url="@logo.png" />
+                  <Image url="@../img/logo.png" />
                </image>
                <HBox.margin>
                   <Insets left="20.0" />
@@ -42,7 +42,7 @@
                      <children>
                         <ImageView fitHeight="64.0" fitWidth="69.0" pickOnBounds="true" preserveRatio="true">
                            <image>
-                              <Image url="@cartLogo.png" />
+                              <Image url="@../img/cartLogo.png" />
                            </image>
                            <HBox.margin>
                               <Insets left="20.0" top="20.0" />

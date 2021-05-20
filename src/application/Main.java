@@ -16,7 +16,7 @@ public class Main extends Application {
 	public void start(Stage window) {
 		try {
 			Parent root = FXMLLoader.load(getClass().getResource("MainScreen.fxml"));
-			window.getIcons().add(new Image("logo black.png"));
+			window.getIcons().add(new Image("file:./src/img/logo black.png"));
 			window.setTitle("The Eater's Club");
 			Scene scene = new Scene(root);
 			scene.getStylesheets().add(getClass().getResource("application.css").toExternalForm());
