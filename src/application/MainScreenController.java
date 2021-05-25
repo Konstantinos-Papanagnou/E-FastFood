@@ -100,6 +100,7 @@ public class MainScreenController implements Initializable {
 			scene.getStylesheets().add(getClass().getResource("application.css").toExternalForm());
 			window.setResizable(false);
 			window.setScene(scene);
+			Main.OpenedStage = window;
 			window.showAndWait();
 		} catch(Exception e1) {
 			e1.printStackTrace();

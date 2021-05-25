@@ -12,6 +12,7 @@ import javafx.scene.control.ListView;
 import javafx.scene.image.Image;
 
 public class Main extends Application {
+	public static Stage OpenedStage;
 	@Override
 	public void start(Stage window) {
 		try {
