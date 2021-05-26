@@ -12,10 +12,14 @@ import javafx.scene.control.Button;
 import javafx.scene.control.ListView;
 import javafx.scene.control.ProgressIndicator;
 import javafx.scene.control.RadioButton;
+import javafx.scene.control.TableColumn;
+import javafx.scene.control.TableView;
 import javafx.scene.control.TextArea;
 import javafx.scene.control.TextField;
 import javafx.scene.control.ToggleGroup;
 import javafx.util.Duration;
+import logic.Order;
+import logic.Plate;
 import javafx.event.*;
 
 public class PaymentController implements Initializable{
@@ -47,7 +51,17 @@ public class PaymentController implements Initializable{
     private RadioButton CardRadioButton;
   	@FXML
   	private ProgressIndicator progress;
+    @FXML
+    private TableView<Order> pinakaspliromis;
+    @FXML
+    private TableColumn<Order,String> proion;
+    @FXML
+    private TableColumn<Order,String> posotita;
+    @FXML
+    private TableColumn<Order,String> timi;
 
+ 
+  	
 	@Override
 	public void initialize(URL location, ResourceBundle resources) {
 		// TODO Auto-generated method stub
@@ -84,7 +98,11 @@ public class PaymentController implements Initializable{
 			fiveSecondsWonder.setCycleCount(1);
 			fiveSecondsWonder.play();
 		});
-		
 	
+		
+		
+		
+		
+		
 	}
 }

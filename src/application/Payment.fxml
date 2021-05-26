@@ -12,21 +12,26 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
 
-<AnchorPane prefHeight="637.0" prefWidth="926.0" style="-fx-background-color: #606060;" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="application.PaymentController">
+<AnchorPane prefHeight="637.0" prefWidth="926.0" style="-fx-background-color: #606060;" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="application.PaymentController">
    <children>
-      <TableView layoutX="28.0" layoutY="55.0" prefHeight="347.0" prefWidth="335.0">
+      <TableView fx:id="PinakasPliromis" layoutX="28.0" layoutY="55.0" prefHeight="318.0" prefWidth="335.0">
         <columns>
-          <TableColumn prefWidth="75.0" text="C1" />
-          <TableColumn prefWidth="75.0" text="C2" />
+          <TableColumn fx:id="proion" prefWidth="148.8000144958496" text="Προϊόν" />
+          <TableColumn fx:id="posotita" prefWidth="92.80000305175781" text="Ποσότητα" />
+            <TableColumn fx:id="timi" prefWidth="95.20001220703125" text="Τιμή" />
         </columns>
       </TableView>
       <VBox layoutX="404.0" layoutY="28.0" prefHeight="496.0" prefWidth="494.0">
          <children>
-            <Label alignment="BOTTOM_CENTER" prefHeight="30.0" prefWidth="398.0" text="              ΣΤΟΙΧΕΙΑ ΠΕΛΑΤΗ" textFill="WHITE" textOverrun="CENTER_WORD_ELLIPSIS">
+            <Label alignment="BOTTOM_CENTER" prefHeight="30.0" prefWidth="539.0" text="              ΣΤΟΙΧΕΙΑ ΠΕΛΑΤΗ" textFill="WHITE" textOverrun="CENTER_WORD_ELLIPSIS">
                <VBox.margin>
                   <Insets />
                </VBox.margin>
+               <font>
+                  <Font name="System Bold" size="12.0" />
+               </font>
             </Label>
             <HBox fx:id="HBox1" prefHeight="37.0" prefWidth="470.0">
                <children>
@@ -95,12 +100,16 @@
             </TextArea>
          </children>
       </VBox>
-      <Button fx:id="BackButton" layoutX="53.0" layoutY="554.0" mnemonicParsing="false" prefHeight="44.0" prefWidth="335.0" text="ΠΙΣΩ" />
-      <Button fx:id="FinishButton" layoutX="489.0" layoutY="554.0" mnemonicParsing="false" prefHeight="44.0" prefWidth="398.0" text="ΠΛΗΡΩΜΗ" />
-      <RadioButton fx:id="CashRadioButton" layoutX="39.0" layoutY="451.0" mnemonicParsing="false" selected="true" text="Μετρητά" textFill="WHITE" textOverrun="CLIP" />
-      <RadioButton fx:id="CardRadioButton" layoutX="156.0" layoutY="451.0" mnemonicParsing="false" text="Πιστωτική/Χρεωστική Κάρτα" textFill="WHITE" />
-      <Label fx:id="troo" layoutX="39.0" layoutY="416.0" text="Τρόπος πληρωμής:" textFill="WHITE" />
-      <Label alignment="CENTER" layoutX="307.0" prefHeight="38.0" prefWidth="282.0" text="ΟΛΟΚΛΗΡΩΣΗ ΠΑΡΑΓΓΕΛΙΑΣ" textFill="WHITE" textOverrun="CENTER_WORD_ELLIPSIS" />
+      <Button fx:id="BackButton" layoutX="53.0" layoutY="554.0" mnemonicParsing="false" prefHeight="44.0" prefWidth="335.0" style="-fx-background-color: #ff7373;" text="ΠΙΣΩ" />
+      <Button fx:id="FinishButton" layoutX="489.0" layoutY="554.0" mnemonicParsing="false" prefHeight="44.0" prefWidth="398.0" style="-fx-background-color: #7fd775;" text="ΠΛΗΡΩΜΗ" textFill="#201919" />
+      <RadioButton fx:id="CashRadioButton" layoutX="40.0" layoutY="476.0" mnemonicParsing="false" selected="true" text="Μετρητά" textFill="WHITE" textOverrun="CLIP" />
+      <RadioButton fx:id="CardRadioButton" layoutX="143.0" layoutY="476.0" mnemonicParsing="false" text="Πιστωτική/Χρεωστική Κάρτα" textFill="WHITE" />
+      <Label fx:id="troo" layoutX="31.0" layoutY="437.0" text="Τρόπος πληρωμής:" textFill="WHITE" />
+      <Label alignment="CENTER" layoutX="307.0" prefHeight="32.0" prefWidth="282.0" text="ΟΛΟΚΛΗΡΩΣΗ ΠΑΡΑΓΓΕΛΙΑΣ" textFill="WHITE" textOverrun="CENTER_WORD_ELLIPSIS">
+         <font>
+            <Font name="System Bold" size="12.0" />
+         </font></Label>
       <ProgressIndicator fx:id="progress" layoutX="27.0" layoutY="55.0" prefHeight="347.0" prefWidth="335.0" progress="0.0" visible="false" />
+      <Label layoutX="140.0" layoutY="383.0" prefHeight="18.0" prefWidth="222.0" text="Σύνολο πληρωμής:" textFill="WHITE" />
    </children>
 </AnchorPane>
