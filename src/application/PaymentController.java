@@ -82,12 +82,12 @@ public class PaymentController implements Initializable{
 		//Προσθήκη όλων των RadioButtons στο ToggleGroup
 		group.getToggles().addAll(CardRadioButton,CashRadioButton);
 		
-		//This closes the form
+		//Κλείνει την φόρμα
 		BackButton.setOnAction(e -> {((Stage)this.AddressField.getScene().getWindow()).close();});
-		//This continues to payment
+		//Συνεχίζει την πληρωμή
 		FinishButton.setOnAction(e -> {
 			if (CardRadioButton.isSelected()) {
-				// Show elli's form
+				//Πηγαίνει στην διαδικασία πληρωμής με  πιστωτική
 				Stage stage = (Stage)this.FinishButton.getScene().getWindow();
 				try {
 					Parent root = FXMLLoader.load(getClass().getResource("cardpayment.fxml"));
@@ -101,8 +101,8 @@ public class PaymentController implements Initializable{
 				}
 				return;
 			}
-			// else 
-			//Continue with the payment
+			
+			//Αλλιώς συνεχίζει με την πληρωμή
 			PinakasPliromis.setVisible(false);
 			progress.setVisible(true);
 			progress.setProgress(-10);
