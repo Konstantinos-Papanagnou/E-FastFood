@@ -1,5 +1,6 @@
 package application;
 
+import java.io.IOException;
 import java.net.URL;
 import java.util.ArrayList;
 import java.util.ResourceBundle;
@@ -10,7 +11,9 @@ import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.EventHandler;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
+import javafx.scene.Parent;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.ListView;
@@ -68,7 +71,8 @@ public class PaymentController implements Initializable{
     private TableColumn<Order,String> timi;
     @FXML
     private Label totallbl;
- 
+	DatabaseHandler db = new DatabaseHandler();
+
 	@Override
 	public void initialize(URL location, ResourceBundle resources) {
 		// TODO Auto-generated method stub
@@ -84,7 +88,17 @@ public class PaymentController implements Initializable{
 		FinishButton.setOnAction(e -> {
 			if (CardRadioButton.isSelected()) {
 				// Show elli's form
-				
+				Stage stage = (Stage)this.FinishButton.getScene().getWindow();
+				try {
+					Parent root = FXMLLoader.load(getClass().getResource("cardpayment.fxml"));
+					stage.setWidth(500);
+					stage.setHeight(500);
+					stage.getScene().setRoot(root);
+					
+				}
+				catch(IOException e1) {
+					e1.printStackTrace();
+				}
 				return;
 			}
 			// else 
@@ -105,10 +119,10 @@ public class PaymentController implements Initializable{
 	        }));
 			fiveSecondsWonder.setCycleCount(1);
 			fiveSecondsWonder.play();
+			db.clearCart();
 		});
 	
 		ObservableList<Order> orderlist = FXCollections.observableArrayList();
-		DatabaseHandler db = new DatabaseHandler();
 		ArrayList<Order> orders = db.getCart();
 		double total = 0;
 		for(Order p : orders) {

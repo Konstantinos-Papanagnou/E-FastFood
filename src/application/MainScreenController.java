@@ -93,7 +93,31 @@ public class MainScreenController implements Initializable {
 			}
 			
 		});
+		
+		cartButton.setOnMouseClicked(new EventHandler<MouseEvent>() {
 
+			@Override
+			public void handle(MouseEvent event) {
+				// TODO Auto-generated method stub
+				try {
+					Stage window = new Stage();
+					Parent root = FXMLLoader.load(getClass().getResource("othoni_cart.fxml"));
+					window.getIcons().add(new Image("file:./src/img/logo black.png"));
+					window.setTitle("The Eater's Club");
+					Scene scene = new Scene(root);
+					
+					scene.getStylesheets().add(getClass().getResource("application.css").toExternalForm());
+					window.setResizable(false);
+					window.setScene(scene);
+					Main.OpenedStage = window;
+					window.showAndWait();
+				} catch(Exception e1) {
+					e1.printStackTrace();
+					System.out.println(e1.getMessage());
+				}
+			}
+				
+		});
 	}
 	
 	@FXML
