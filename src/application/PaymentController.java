@@ -1,10 +1,13 @@
 package application;
 
 import java.net.URL;
+import java.util.ArrayList;
 import java.util.ResourceBundle;
 
 import javafx.animation.KeyFrame;
 import javafx.animation.Timeline;
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
 import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
@@ -17,7 +20,10 @@ import javafx.scene.control.TableView;
 import javafx.scene.control.TextArea;
 import javafx.scene.control.TextField;
 import javafx.scene.control.ToggleGroup;
+import javafx.scene.control.cell.PropertyValueFactory;
+import javafx.stage.Stage;
 import javafx.util.Duration;
+import logic.DatabaseHandler;
 import logic.Order;
 import logic.Plate;
 import javafx.event.*;
@@ -25,8 +31,6 @@ import javafx.event.*;
 public class PaymentController implements Initializable{
 
    
-	@FXML
-    private ListView<String> listview;
     @FXML
     private TextField NameField;
     @FXML
@@ -61,7 +65,6 @@ public class PaymentController implements Initializable{
     private TableColumn<Order,String> timi;
 
  
-  	
 	@Override
 	public void initialize(URL location, ResourceBundle resources) {
 		// TODO Auto-generated method stub
@@ -72,7 +75,7 @@ public class PaymentController implements Initializable{
 		group.getToggles().addAll(CardRadioButton,CashRadioButton);
 		
 		//This closes the form
-		BackButton.setOnAction(e -> {Main.OpenedStage.close();});
+		BackButton.setOnAction(e -> {((Stage)this.AddressField.getScene().getWindow()).close();});
 		//This continues to payment
 		FinishButton.setOnAction(e -> {
 			if (CardRadioButton.isSelected()) {
@@ -81,7 +84,7 @@ public class PaymentController implements Initializable{
 			}
 			// else 
 			//Continue with the payment
-			listview.setVisible(false);
+			pinakaspliromis.setVisible(false);
 			progress.setVisible(true);
 			progress.setProgress(-10);
 			Timeline fiveSecondsWonder = new Timeline(
@@ -99,10 +102,17 @@ public class PaymentController implements Initializable{
 			fiveSecondsWonder.play();
 		});
 	
+		ObservableList<Order> orderlist = FXCollections.observableArrayList();
+		DatabaseHandler db = new DatabaseHandler();
+		ArrayList<Order> orders = db.getCart();
+		System.out.println(orders.size());
+		for(Order p : orders) {
+			orderlist.add(p);
+		}
 		
-		
-		
-		
-		
+		proion.setCellValueFactory(new PropertyValueFactory<Order, String>("proion"));
+		posotita.setCellValueFactory(new PropertyValueFactory<Order, String>("posotita"));
+		timi.setCellValueFactory(new PropertyValueFactory<Order, String>("timi"));
+		pinakaspliromis.getColumns().addAll(proion, posotita, timi);
 	}
 }

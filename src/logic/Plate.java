@@ -1,10 +1,12 @@
 package logic;
 
+import java.util.ArrayList;
+
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 
 public class Plate {
-	public static ObservableList<Plate> platesInCart = FXCollections.observableArrayList();
+	public static ArrayList<Plate> platesInCart = new ArrayList<Plate>();
 	private int plateID;
 	private String imagePath;
 	private String plateName;

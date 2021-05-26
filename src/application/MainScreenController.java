@@ -5,6 +5,8 @@ import java.util.HashSet;
 import java.util.ResourceBundle;
 import java.util.Set;
 
+import javax.naming.Context;
+
 import javafx.animation.RotateTransition;
 import javafx.beans.value.ChangeListener;
 import javafx.beans.value.ObservableValue;
@@ -37,7 +39,10 @@ import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
 
+import application.PaymentController;
+
 public class MainScreenController implements Initializable {
+	
     @FXML private HBox cartButton;
     @FXML private Label brandLbl;
     @FXML private ImageView logoView;
@@ -56,6 +61,7 @@ public class MainScreenController implements Initializable {
     private DatabaseHandler database = new DatabaseHandler();
 	@Override
 	public void initialize(URL location, ResourceBundle resources) {
+		database.clearCart();
 		manageAnimations();
 		setupSpinner();
 		//Setup list and populate with whatever the database holds
@@ -72,6 +78,7 @@ public class MainScreenController implements Initializable {
 				if(selected == null) return;
 				selected.setQuantity(quantitySpinner.getValue());
 				Plate.platesInCart.add(selected);
+				database.addToCart(selected.getPlateName(), selected.getQuantity(), selected.getPrice());
 				String message = "You successfully added \"" + selected.getPlateName() + "\" to your cart!\n\n\nYour cart consists of:\n\n";
 				double total = 0;
 				for(Plate plate : Plate.platesInCart) {
@@ -97,6 +104,7 @@ public class MainScreenController implements Initializable {
 			window.getIcons().add(new Image("file:./src/img/logo black.png"));
 			window.setTitle("The Eater's Club");
 			Scene scene = new Scene(root);
+			
 			scene.getStylesheets().add(getClass().getResource("application.css").toExternalForm());
 			window.setResizable(false);
 			window.setScene(scene);
