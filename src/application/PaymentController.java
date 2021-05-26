@@ -12,6 +12,7 @@ import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Button;
+import javafx.scene.control.Label;
 import javafx.scene.control.ListView;
 import javafx.scene.control.ProgressIndicator;
 import javafx.scene.control.RadioButton;
@@ -56,7 +57,7 @@ public class PaymentController implements Initializable{
   	@FXML
   	private ProgressIndicator progress;
     @FXML
-    private TableView<Order> pinakaspliromis;
+    private TableView<Order> PinakasPliromis;
     @FXML
     private TableColumn<Order,String> ID;
     @FXML
@@ -65,7 +66,8 @@ public class PaymentController implements Initializable{
     private TableColumn<Order,String> posotita;
     @FXML
     private TableColumn<Order,String> timi;
-
+    @FXML
+    private Label totallbl;
  
 	@Override
 	public void initialize(URL location, ResourceBundle resources) {
@@ -83,10 +85,11 @@ public class PaymentController implements Initializable{
 			if (CardRadioButton.isSelected()) {
 				// Show elli's form
 				
+				return;
 			}
 			// else 
 			//Continue with the payment
-			pinakaspliromis.setVisible(false);
+			PinakasPliromis.setVisible(false);
 			progress.setVisible(true);
 			progress.setProgress(-10);
 			Timeline fiveSecondsWonder = new Timeline(
@@ -107,19 +110,18 @@ public class PaymentController implements Initializable{
 		ObservableList<Order> orderlist = FXCollections.observableArrayList();
 		DatabaseHandler db = new DatabaseHandler();
 		ArrayList<Order> orders = db.getCart();
-		System.out.println(orders.size());
+		double total = 0;
 		for(Order p : orders) {
 			orderlist.add(p);
+			total += Integer.parseInt(p.getposotita()) * Double.parseDouble(p.gettimi());
 		}
 		
 		this.ID.setCellValueFactory(new PropertyValueFactory<Order,String>("ID"));
 		this.proion.setCellValueFactory(new PropertyValueFactory<Order, String>("proion"));
 		this.posotita.setCellValueFactory(new PropertyValueFactory<Order, String>("posotita"));
 		this.timi.setCellValueFactory(new PropertyValueFactory<Order, String>("timi"));
-		//this.pinakaspliromis.setItems(null);
+		this.PinakasPliromis.setItems(orderlist);
+		this.totallbl.setText(this.totallbl.getText() + " " + String.format("%.2f",total) + " €");
 		
-		this.pinakaspliromis.setItems(orderlist);
-		
-		//this.pinakaspliromis.getColumns().addAll(ID,proion, posotita, timi);
 	}
 }

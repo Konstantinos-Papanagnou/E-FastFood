@@ -14,9 +14,9 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane prefHeight="637.0" prefWidth="926.0" style="-fx-background-color: #606060;" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="application.PaymentController">
+<AnchorPane prefHeight="637.0" prefWidth="926.0" style="-fx-background-color: #606060;" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="application.PaymentController">
    <children>
-      <TableView fx:id="PinakasPliromis" layoutX="14.0" layoutY="49.0" prefHeight="307.0" prefWidth="371.0">
+      <TableView fx:id="PinakasPliromis" layoutX="14.0" layoutY="49.0" prefHeight="347.0" prefWidth="371.0">
         <columns>
           <TableColumn fx:id="ID" prefWidth="99.99999713897705" text="ID" />
           <TableColumn fx:id="posotita" prefWidth="91.99996948242188" text="Ποσότητα" />
@@ -111,6 +111,9 @@
             <Font name="System Bold" size="12.0" />
          </font></Label>
       <ProgressIndicator fx:id="progress" layoutX="27.0" layoutY="55.0" prefHeight="347.0" prefWidth="335.0" progress="0.0" visible="false" />
-      <Label layoutX="140.0" layoutY="383.0" prefHeight="18.0" prefWidth="222.0" text="Σύνολο πληρωμής:" textFill="WHITE" />
+      <Label fx:id="totallbl" layoutX="169.0" layoutY="402.0" prefHeight="37.0" prefWidth="216.0" text="Σύνολο πληρωμής:" textFill="WHITE">
+         <font>
+            <Font name="System Bold" size="15.0" />
+         </font></Label>
    </children>
 </AnchorPane>
