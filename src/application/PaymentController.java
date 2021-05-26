@@ -58,6 +58,8 @@ public class PaymentController implements Initializable{
     @FXML
     private TableView<Order> pinakaspliromis;
     @FXML
+    private TableColumn<Order,String> ID;
+    @FXML
     private TableColumn<Order,String> proion;
     @FXML
     private TableColumn<Order,String> posotita;
@@ -110,9 +112,14 @@ public class PaymentController implements Initializable{
 			orderlist.add(p);
 		}
 		
-		proion.setCellValueFactory(new PropertyValueFactory<Order, String>("proion"));
-		posotita.setCellValueFactory(new PropertyValueFactory<Order, String>("posotita"));
-		timi.setCellValueFactory(new PropertyValueFactory<Order, String>("timi"));
-		pinakaspliromis.getColumns().addAll(proion, posotita, timi);
+		this.ID.setCellValueFactory(new PropertyValueFactory<Order,String>("ID"));
+		this.proion.setCellValueFactory(new PropertyValueFactory<Order, String>("proion"));
+		this.posotita.setCellValueFactory(new PropertyValueFactory<Order, String>("posotita"));
+		this.timi.setCellValueFactory(new PropertyValueFactory<Order, String>("timi"));
+		//this.pinakaspliromis.setItems(null);
+		
+		this.pinakaspliromis.setItems(orderlist);
+		
+		//this.pinakaspliromis.getColumns().addAll(ID,proion, posotita, timi);
 	}
 }

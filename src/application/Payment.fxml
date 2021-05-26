@@ -14,13 +14,14 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane prefHeight="637.0" prefWidth="926.0" style="-fx-background-color: #606060;" xmlns="http://javafx.com/javafx/8.0.281" xmlns:fx="http://javafx.com/fxml/1" fx:controller="application.PaymentController">
+<AnchorPane prefHeight="637.0" prefWidth="926.0" style="-fx-background-color: #606060;" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="application.PaymentController">
    <children>
-      <TableView fx:id="PinakasPliromis" layoutX="28.0" layoutY="55.0" prefHeight="318.0" prefWidth="335.0">
+      <TableView fx:id="PinakasPliromis" layoutX="14.0" layoutY="49.0" prefHeight="307.0" prefWidth="371.0">
         <columns>
-          <TableColumn fx:id="proion" prefWidth="148.8000144958496" text="Προϊόν" />
-          <TableColumn fx:id="posotita" prefWidth="92.80000305175781" text="Ποσότητα" />
-            <TableColumn fx:id="timi" prefWidth="95.20001220703125" text="Τιμή" />
+          <TableColumn fx:id="ID" prefWidth="99.99999713897705" text="ID" />
+          <TableColumn fx:id="posotita" prefWidth="91.99996948242188" text="Ποσότητα" />
+            <TableColumn fx:id="proion" prefWidth="72.79997253417969" text="Προϊόν" />
+            <TableColumn fx:id="timi" minWidth="0.0" prefWidth="105.59996337890624" text="Τιμή" />
         </columns>
       </TableView>
       <VBox layoutX="404.0" layoutY="28.0" prefHeight="496.0" prefWidth="494.0">

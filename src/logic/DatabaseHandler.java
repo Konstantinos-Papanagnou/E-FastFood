@@ -89,7 +89,7 @@ public class DatabaseHandler {
 			preped = connection.prepareStatement(SelectQuery);
 			res = preped.executeQuery();
 			while(res.next()) {
-				plates.add(new Order(res.getInt("ID"), res.getString("PLATENAME"), Integer.toString(res.getInt("PLATEQUANTITY")), Double.toString(res.getDouble("PRICE"))));
+				plates.add(new Order(Integer.toString(res.getInt("ID")), res.getString("PLATENAME"), Integer.toString(res.getInt("PLATEQUANTITY")), Double.toString(res.getDouble("PRICE"))));
 			}
 			return plates;
 		}catch(Exception e){

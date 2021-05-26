@@ -7,23 +7,37 @@ import javafx.beans.property.StringProperty;
 
 public class Order {
 
+	private final StringProperty ID;
 	private final StringProperty proion;
 	private final StringProperty posotita;
 	private final StringProperty timi;
-	private final IntegerProperty ID;
+	
 
-	public Order (String dataproion,String dataposotita,String datatimi) {
-       this.proion=new SimpleStringProperty(dataproion);
+	public Order (String dataID,String dataproion,String dataposotita,String datatimi) {
+		this.ID=new SimpleStringProperty(dataID);
+		this.proion=new SimpleStringProperty(dataproion);
        this.posotita=new SimpleStringProperty(dataposotita);
        this.timi=new SimpleStringProperty(datatimi);
-       this.ID=new SimpleIntegerProperty(0);
+       
 	}
-	public Order (int ID, String dataproion,String dataposotita,String datatimi) {
-	       this.proion=new SimpleStringProperty(dataproion);
-	       this.posotita=new SimpleStringProperty(dataposotita);
-	       this.timi=new SimpleStringProperty(datatimi);
-	       this.ID = new SimpleIntegerProperty(ID);
+	
+	
+	
+	public StringProperty IDProperty() {
+		return this.ID;
 	}
+  
+	public String getID() {
+		return this.IDProperty().get();
+	}
+	
+	public void setID(String ID) {
+		this.IDProperty().set(ID);
+	}
+	
+	
+
+	
 	public StringProperty proionProperty() {
 		return this.proion;
 		
@@ -37,18 +51,7 @@ public class Order {
 		this.proionProperty().set(proion);
 	}
 	
-	public IntegerProperty IDProperty() {
-		return this.ID;
-		
-	}
 	
-	public int getID() {
-		return this.IDProperty().get();
-	}
-  
-	public void setproion(int ID) {
-		this.ID.set(ID);
-	}
 	
 	public StringProperty posotitaProperty() {
 		return this.posotita;
@@ -62,6 +65,10 @@ public class Order {
 	public void setposotita(String posotita) {
 		this.proionProperty().set(posotita);
 	}
+	
+	
+	
+	
 	
 	
 	public StringProperty timiProperty() {
