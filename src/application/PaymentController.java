@@ -71,10 +71,138 @@ public class PaymentController implements Initializable{
     private TableColumn<Order,String> posotita;
     @FXML
     private TableColumn<Order,String> timi;
+  
     @FXML
     private Label totallbl;
 	DatabaseHandler db = new DatabaseHandler();
 
+	@FXML
+	void PaymentClick(ActionEvent event) {
+    	if(!checkName(NameField.getText())) {
+    		showDialog("","Εισάγετε ονοματεπώνυμο");
+    		return;
+    	}
+    	if(!checkTelephone(TelephoneField.getText())) {
+    		showDialog("","Εισάγετε τηλέφωνο");
+    		return;
+    	
+    	}
+    	if(!checkEmail(EmailField.getText())) {
+    		showDialog("","Εισάγετε κάποιο email");
+    		return;
+    	}
+    	
+    	
+    	if(!checkAddress(AddressField.getText())) {
+    		showDialog("","Εισάγετε διεύθυνση");
+    		return;
+    	}
+    	
+    	if(!checkFloor(FloorField.getText())) {
+    		showDialog("","Εισάγετε όροφο");
+    		return;
+    	}
+    	
+    	if(!checkBell(BellField.getText())) {
+    		showDialog("","Εισάγετε κουδούνι");
+    		return; 
+    		}
+    	
+	
+    	
+	hideObjects();
+	
+	progress.setVisible(true);
+	progress.setProgress(-10);
+	Timeline timer = new Timeline(
+            new KeyFrame(Duration.seconds(3),
+               new EventHandler<ActionEvent>() {
+
+            @Override
+        	public void handle(ActionEvent event) {
+            	progress.setProgress(100);
+	
+    		}
+        }));
+	timer.setCycleCount(1);
+	timer.play();
+		
+	db.clearCart();
+
+}
+	
+private void hideObjects() {
+	NameField.setVisible(false);
+	TelephoneField.setVisible(false);
+	EmailField.setVisible(false);
+	AddressField.setVisible(false);
+	FloorField.setVisible(false);
+	BellField.setVisible(false);
+
+}
+	
+	
+	private boolean checkName(String Name) {
+    	if(Name.length() > 0) {
+    		return true;
+    	}
+    	return false;
+    }
+    
+    private boolean checkTelephone(String Telephone) {
+    	if(Telephone.length()>0) {
+    		
+    		return true;
+    		
+    	}
+    	return false;
+    }
+    
+    private boolean checkEmail(String Email) {
+    	if( Email.length() >0) {
+    		return true;
+
+    	}
+    	else {
+    		return false;
+    	}
+    }
+	
+	
+    private boolean checkAddress(String Address) {
+    	if( Address.length() >0) {
+    		return true;
+
+    	}
+    	else {
+    		return false;
+    	}
+    }
+    
+    private boolean checkFloor(String Floor) {
+    	if( Floor.length() >0) {
+    		return true;
+
+    	}
+    	else {
+    		return false;
+    	}
+    }
+    
+    private boolean checkBell(String Bell) {
+    	if( Bell.length() >0) {
+    		return true;
+
+    	}
+    	else {
+    		return false;
+    	}
+    }
+	
+    
+
+	
+	
 	@Override
 	public void initialize(URL location, ResourceBundle resources) {
 		
@@ -87,6 +215,10 @@ public class PaymentController implements Initializable{
 		
 	  //Κλείνει την φόρμα
 	  	BackButton.setOnAction(e -> {((Stage)this.AddressField.getScene().getWindow()).close();});
+	  	
+	  	
+	  
+	  	
 		//Συνεχίζει την πληρωμή
 		FinishButton.setOnAction(e -> {
 			if (CardRadioButton.isSelected()) {
@@ -124,7 +256,9 @@ public class PaymentController implements Initializable{
 			fiveSecondsWonder.play();
 			db.clearCart();
 		});
-	
+		
+		
+		
 		ObservableList<Order> orderlist = FXCollections.observableArrayList();
 		ArrayList<Order> orders = db.getCart();
 		double total = 0;
@@ -139,7 +273,20 @@ public class PaymentController implements Initializable{
 		this.timi.setCellValueFactory(new PropertyValueFactory<Order, String>("timi"));
 		this.PinakasPliromis.setItems(orderlist);
 		this.totallbl.setText(this.totallbl.getText() + " " + String.format("%.2f",total) + " €");
-		
-	}
-	
+		}
+
+
+
+
+    private void showDialog(String Message, String Title) {
+	Dialog<String> dialog = new Dialog<String>();
+	dialog.setTitle(Title);
+    ButtonType type = new ButtonType("Ok", ButtonData.OK_DONE);
+    dialog.setContentText(Message);
+    
+    dialog.setWidth(500);
+    dialog.getDialogPane().getButtonTypes().add(type);
+    dialog.showAndWait();
 }
+}
+	

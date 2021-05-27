@@ -36,7 +36,7 @@
             </Label>
             <HBox fx:id="HBox1" prefHeight="37.0" prefWidth="470.0">
                <children>
-                  <Label prefHeight="37.0" prefWidth="131.0" text="Ονοματεπώνυμο:" textFill="WHITE" />
+                  <Label fx:id="NameLbl" prefHeight="37.0" prefWidth="131.0" text="Ονοματεπώνυμο:" textFill="WHITE" />
                   <TextField fx:id="NameField" prefHeight="32.0" prefWidth="366.0">
                      <HBox.margin>
                         <Insets top="5.0" />
@@ -46,7 +46,7 @@
             </HBox>
             <HBox fx:id="hbox" prefHeight="37.0" prefWidth="470.0">
                <children>
-                  <Label prefHeight="37.0" prefWidth="130.0" text="Τηλέφωνο:" textFill="WHITE" />
+                  <Label fx:id="TelephoneLbl" prefHeight="37.0" prefWidth="130.0" text="Τηλέφωνο:" textFill="WHITE" />
                   <TextField fx:id="TelephoneField" prefHeight="32.0" prefWidth="364.0">
                      <HBox.margin>
                         <Insets top="5.0" />
@@ -56,7 +56,7 @@
             </HBox>
             <HBox prefHeight="37.0" prefWidth="470.0">
                <children>
-                  <Label prefHeight="37.0" prefWidth="152.0" text="Email:" textFill="WHITE" />
+                  <Label fx:id="EmailLbl" prefHeight="37.0" prefWidth="152.0" text="Email:" textFill="WHITE" />
                   <TextField fx:id="EmailField" prefHeight="32.0" prefWidth="387.0">
                      <HBox.margin>
                         <Insets top="5.0" />
@@ -64,7 +64,7 @@
                   </TextField>
                </children>
             </HBox>
-            <HBox prefHeight="37.0" prefWidth="470.0">
+            <HBox fx:id="AddressLbl" prefHeight="37.0" prefWidth="470.0">
                <children>
                   <Label prefHeight="37.0" prefWidth="131.0" text="Διεύθυνση:" textFill="WHITE" />
                   <TextField fx:id="AddressField" prefHeight="32.0" prefWidth="365.0">
@@ -74,7 +74,7 @@
                   </TextField>
                </children>
             </HBox>
-            <HBox prefHeight="37.0" prefWidth="470.0">
+            <HBox fx:id="FloorLbl" prefHeight="37.0" prefWidth="470.0">
                <children>
                   <Label prefHeight="37.0" prefWidth="131.0" text="Όροφος:" textFill="WHITE" />
                   <TextField fx:id="FloorField" prefHeight="32.0" prefWidth="365.0">
@@ -86,7 +86,7 @@
             </HBox>
             <HBox prefHeight="37.0" prefWidth="470.0">
                <children>
-                  <Label prefHeight="37.0" prefWidth="130.0" text="Κουδούνι:" textFill="WHITE" />
+                  <Label fx:id="BellLbl" prefHeight="37.0" prefWidth="130.0" text="Κουδούνι:" textFill="WHITE" />
                   <TextField fx:id="BellField" prefHeight="32.0" prefWidth="363.0">
                      <HBox.margin>
                         <Insets top="5.0" />
@@ -102,7 +102,7 @@
          </children>
       </VBox>
       <Button fx:id="BackButton" layoutX="53.0" layoutY="554.0" mnemonicParsing="false" prefHeight="44.0" prefWidth="335.0" style="-fx-background-color: #ff7373;" text="ΠΙΣΩ" />
-      <Button fx:id="FinishButton" layoutX="489.0" layoutY="554.0" mnemonicParsing="false" prefHeight="44.0" prefWidth="398.0" style="-fx-background-color: #7fd775;" text="ΠΛΗΡΩΜΗ" textFill="#201919" />
+      <Button fx:id="FinishButton" layoutX="489.0" layoutY="554.0" mnemonicParsing="false" onAction="#PaymentClick" prefHeight="44.0" prefWidth="398.0" style="-fx-background-color: #7fd775;" text="ΠΛΗΡΩΜΗ" textFill="#201919" />
       <RadioButton fx:id="CashRadioButton" layoutX="40.0" layoutY="476.0" mnemonicParsing="false" selected="true" text="Μετρητά" textFill="WHITE" textOverrun="CLIP" />
       <RadioButton fx:id="CardRadioButton" layoutX="143.0" layoutY="476.0" mnemonicParsing="false" text="Πιστωτική/Χρεωστική Κάρτα" textFill="WHITE" />
       <Label fx:id="troo" layoutX="31.0" layoutY="437.0" text="Τρόπος πληρωμής:" textFill="WHITE" />
