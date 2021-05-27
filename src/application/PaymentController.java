@@ -9,12 +9,13 @@ import javafx.animation.KeyFrame;
 import javafx.animation.Timeline;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
-import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.scene.Parent;
 import javafx.scene.control.Button;
+import javafx.scene.control.ButtonType;
+import javafx.scene.control.Dialog;
 import javafx.scene.control.Label;
 import javafx.scene.control.ListView;
 import javafx.scene.control.ProgressIndicator;
@@ -24,6 +25,7 @@ import javafx.scene.control.TableView;
 import javafx.scene.control.TextArea;
 import javafx.scene.control.TextField;
 import javafx.scene.control.ToggleGroup;
+import javafx.scene.control.ButtonBar.ButtonData;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.stage.Stage;
 import javafx.util.Duration;
@@ -75,15 +77,16 @@ public class PaymentController implements Initializable{
 
 	@Override
 	public void initialize(URL location, ResourceBundle resources) {
-		// TODO Auto-generated method stub
+		
   		
   	    //Δημιουργία ToggleGroup
 		ToggleGroup group = new ToggleGroup();
 		//Προσθήκη όλων των RadioButtons στο ToggleGroup
 		group.getToggles().addAll(CardRadioButton,CashRadioButton);
 		
-		//Κλείνει την φόρμα
-		BackButton.setOnAction(e -> {((Stage)this.AddressField.getScene().getWindow()).close();});
+		
+	  //Κλείνει την φόρμα
+	  	BackButton.setOnAction(e -> {((Stage)this.AddressField.getScene().getWindow()).close();});
 		//Συνεχίζει την πληρωμή
 		FinishButton.setOnAction(e -> {
 			if (CardRadioButton.isSelected()) {
@@ -102,7 +105,7 @@ public class PaymentController implements Initializable{
 				return;
 			}
 			
-			//Αλλιώς συνεχίζει με την πληρωμή
+			
 			PinakasPliromis.setVisible(false);
 			progress.setVisible(true);
 			progress.setProgress(-10);
@@ -138,4 +141,5 @@ public class PaymentController implements Initializable{
 		this.totallbl.setText(this.totallbl.getText() + " " + String.format("%.2f",total) + " €");
 		
 	}
+	
 }
