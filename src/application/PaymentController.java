@@ -152,42 +152,42 @@ public class PaymentController implements Initializable{
 	  	BackButton.setOnAction(e -> {((Stage)this.AddressField.getScene().getWindow()).close();});
 	  	
 	  	
-	  
-	  	
-		//Συνεχίζει την πληρωμή
 		FinishButton.setOnAction(e -> {
 			
 			if(!checkName(NameField.getText())) {
-	    		showDialog("","Εισάγετε ονοματεπώνυμο");
+	    		showDialog("Εισάγετε ονοματεπώνυμο","Υποχρεωτικό πεδίο");
 	    		return;
 	    	}
 	    	if(!checkTelephone(TelephoneField.getText())) {
-	    		showDialog("","Εισάγετε τηλέφωνο");
+	    		showDialog("Εισάγετε αριθμό τηλεφώνου","Υποχρεωτικό πεδίο");
 	    		return;
 	    	
 	    	}
 	    	if(!checkEmail(EmailField.getText())) {
-	    		showDialog("","Εισάγετε κάποιο email");
+	    		showDialog("Εισάγετε email","Υποχρεωτικό πεδίο");
 	    		return;
 	    	}
 	    	
 	    	
 	    	if(!checkAddress(AddressField.getText())) {
-	    		showDialog("","Εισάγετε διεύθυνση");
+	    		showDialog("Εισάγετε διεύθυνση","Υποχρεωτικό πεδίο");
 	    		return;
 	    	}
 	    	
 	    	if(!checkFloor(FloorField.getText())) {
-	    		showDialog("","Εισάγετε όροφο");
+	    		showDialog("Εισάγετε όροφο","Υποχρεωτικό πεδίο");
 	    		return;
 	    	}
 	    	
 	    	if(!checkBell(BellField.getText())) {
-	    		showDialog("","Εισάγετε κουδούνι");
+	    		showDialog("Εισάγετε κουδούνι","Υποχρεωτικό πεδίο");
 	    		return; 
 	    		}
 			
-			if (CardRadioButton.isSelected()) {
+			
+	    	
+	    	//
+	    	if (CardRadioButton.isSelected()) {
 				//Πηγαίνει στην διαδικασία πληρωμής με  πιστωτική
 				Stage stage = (Stage)this.FinishButton.getScene().getWindow();
 				try {
@@ -244,15 +244,15 @@ public class PaymentController implements Initializable{
 
 
 
-    private void showDialog(String Message, String Title) {
-	Dialog<String> dialog = new Dialog<String>();
-	dialog.setTitle(Title);
-    ButtonType type = new ButtonType("Ok", ButtonData.OK_DONE);
-    dialog.setContentText(Message);
-    
-    dialog.setWidth(500);
-    dialog.getDialogPane().getButtonTypes().add(type);
-    dialog.showAndWait();
+        private void showDialog(String Message, String Title) {
+	    Dialog<String> dialog = new Dialog<String>();
+	    dialog.setTitle(Title);
+        ButtonType type = new ButtonType("Ok", ButtonData.OK_DONE);
+        dialog.setContentText(Message);
+        dialog.setWidth(500);
+        dialog.getDialogPane().getButtonTypes().add(type);
+        dialog.showAndWait();
 }
+        
 }
 	

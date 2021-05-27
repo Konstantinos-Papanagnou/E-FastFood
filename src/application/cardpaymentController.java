@@ -60,16 +60,16 @@ public class cardpaymentController implements Initializable{
     @FXML
     void PayClick(ActionEvent event) {
     	if(!checkName(namefield.getText())) {
-    		showDialog("Λανθασμενο Ονοματεπωνυμο","Λανθασμενη Εισαγωγη Στοιχείων");
+    		showDialog("Λανθασμένο Ονοματεπώνυμο","Λανθασμένη Εισαγωγή Στοιχείων");
     		return;
     	}
     	if(!checkCardNumber(cardnumberfield.getText())) {
-    		showDialog("Λανθασμενος Αριθμός κάρτας ","Λανθασμενη Εισαγωγη Στοιχείων");
+    		showDialog("Λανθασμένος Αριθμός κάρτας ","Λανθασμένη Εισαγωγή Στοιχείων");
     		return;
     	
     	}
     	if(!check3digitCode(securitycodefield.getText())) {
-    		showDialog("Λανθασμενος τριψήφιος κωδικός","Λανθασμενη Εισαγωγη Στοιχείων");
+    		showDialog("Λανθασμένος τριψήφιος κωδικός","Λανθασμένη Εισαγωγή Στοιχείων");
     		return;
     	}
       	// Add progressBar bar
