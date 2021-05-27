@@ -2,9 +2,6 @@ package logic;
 
 import java.util.ArrayList;
 
-import javafx.collections.FXCollections;
-import javafx.collections.ObservableList;
-
 public class Plate {
 	public static ArrayList<Plate> platesInCart = new ArrayList<Plate>();
 	private int plateID;

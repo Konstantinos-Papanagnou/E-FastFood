@@ -79,14 +79,14 @@ public class MainScreenController implements Initializable {
 				selected.setQuantity(quantitySpinner.getValue());
 				Plate.platesInCart.add(selected);
 				database.addToCart(selected.getPlateName(), selected.getQuantity(), selected.getPrice());
-				String message = "You successfully added \"" + selected.getPlateName() + "\" to your cart!\n\n\nYour cart consists of:\n\n";
+				String message = "Το πιάτο \"" + selected.getPlateName() + "\" προστέθηκε στο καλάθι!\n\n\nΤο καλάθι σας:\n\n";
 				double total = 0;
 				for(Plate plate : Plate.platesInCart) {
 					total += plate.getPrice() * plate.getQuantity();
-					message += "\"" + plate.getPlateName() + "\"\tQuantity:" + plate.getQuantity() + "\tPrice: " + String.format("%.2f", plate.getPrice() * plate.getQuantity()) + "€\n";
+					message += "\"" + plate.getPlateName() + "\"\tΠοσότητα:" + plate.getQuantity() + "\tΤιμή: " + String.format("%.2f", plate.getPrice() * plate.getQuantity()) + "€\n";
 				}
-				message += "\nTotal Price: " + String.format("%.2f",total) + "€";
-				showDialog(message, "Success!");
+				message += "\nΣυνολικό Ποσό: " + String.format("%.2f",total) + "€";
+				showDialog(message, "Επιτυχία!");
 				quantitySpinner.decrement(quantitySpinner.getValue() -1);
 				selected = null;
 				quantitySpinner.setDisable(true);
@@ -187,9 +187,9 @@ public class MainScreenController implements Initializable {
 		setupAdapter(plates);
 		listView.getSelectionModel().selectedItemProperty().addListener(new ChangeListener<Plate>() {
 			public void changed(ObservableValue<? extends Plate> ov, final Plate oldValue, final Plate newValue) {
-				selectedPlateLbl.setText("Plate: " + newValue.getPlateName());
-				selectedPriceLbl.setText("Plate Price: " + String.format("%.2f", newValue.getPrice()) + "€");
-				finalPriceLbl.setText("Final Plate Price: " + String.format("%.2f",newValue.getPrice() * quantitySpinner.getValue())+ "€");
+				selectedPlateLbl.setText("Πιάτο: " + newValue.getPlateName());
+				selectedPriceLbl.setText("Τιμή Πιάτου: " + String.format("%.2f", newValue.getPrice()) + "€");
+				finalPriceLbl.setText("Συνολικό Ποσό: " + String.format("%.2f",newValue.getPrice() * quantitySpinner.getValue())+ "€");
 				selected = newValue;
 				quantitySpinner.setDisable(false);
 			}
@@ -215,7 +215,7 @@ public class MainScreenController implements Initializable {
 			@Override
 			public void changed(ObservableValue<? extends Integer> observable, Integer oldValue, Integer newValue) {
 				if(selected == null) return;
-				finalPriceLbl.setText("Final Plate Price: " + String.format("%.2f",selected.getPrice() * newValue) + "€");
+				finalPriceLbl.setText("Συνολικό Ποσό: " + String.format("%.2f",selected.getPrice() * newValue) + "€");
 			}
 			
 		});

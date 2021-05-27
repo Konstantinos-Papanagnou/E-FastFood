@@ -48,7 +48,7 @@
                               <Insets left="20.0" top="20.0" />
                            </HBox.margin>
                         </ImageView>
-                        <Text fill="WHITE" strokeType="OUTSIDE" strokeWidth="0.0" text="View Your Cart">
+                        <Text fill="WHITE" strokeType="OUTSIDE" strokeWidth="0.0" text="Το καλάθι μου">
                            <font>
                               <Font name="Elephant" size="24.0" />
                            </font>
@@ -74,10 +74,10 @@
          </padding>
       </HBox>
       <ListView fx:id="listView" layoutY="196.0" prefHeight="750.0" prefWidth="1400.0" style="-fx-background-color: #505050;" />
-      <Spinner fx:id="quantitySpinner" layoutX="1143.0" layoutY="957.0" prefHeight="31.0" prefWidth="79.0" />
-      <Label fx:id="selectedPlateLbl" layoutX="35.0" layoutY="962.0" text="Plate: " textFill="WHITE" />
-      <Label fx:id="selectedPriceLbl" layoutX="848.0" layoutY="962.0" text="Plate Price:" textFill="WHITE" />
-      <Button fx:id="addToCartBtn" layoutX="1250.0" layoutY="957.0" mnemonicParsing="false" prefHeight="31.0" prefWidth="123.0" text="Add To Cart" />
-      <Label fx:id="finalPriceLbl" layoutX="973.0" layoutY="962.0" text="Final Plate Price:" textFill="WHITE" />
+      <Spinner fx:id="quantitySpinner" layoutX="1032.0" layoutY="957.0" prefHeight="31.0" prefWidth="79.0" />
+      <Label fx:id="selectedPlateLbl" layoutX="35.0" layoutY="962.0" text="Πιάτο: " textFill="WHITE" />
+      <Label fx:id="selectedPriceLbl" layoutX="713.0" layoutY="962.0" text="Τιμή Πιάτου: " textFill="WHITE" />
+      <Button fx:id="addToCartBtn" layoutX="1146.0" layoutY="957.0" mnemonicParsing="false" prefHeight="31.0" prefWidth="208.0" text="Προσθήκη στο καλάθι" />
+      <Label fx:id="finalPriceLbl" layoutX="859.0" layoutY="962.0" text="Συνολικό Ποσό:" textFill="WHITE" />
    </children>
 </AnchorPane>
