@@ -75,71 +75,6 @@ public class PaymentController implements Initializable{
     @FXML
     private Label totallbl;
 	DatabaseHandler db = new DatabaseHandler();
-
-	@FXML
-	void PaymentClick(ActionEvent event) {
-    	if(!checkName(NameField.getText())) {
-    		showDialog("","Εισάγετε ονοματεπώνυμο");
-    		return;
-    	}
-    	if(!checkTelephone(TelephoneField.getText())) {
-    		showDialog("","Εισάγετε τηλέφωνο");
-    		return;
-    	
-    	}
-    	if(!checkEmail(EmailField.getText())) {
-    		showDialog("","Εισάγετε κάποιο email");
-    		return;
-    	}
-    	
-    	
-    	if(!checkAddress(AddressField.getText())) {
-    		showDialog("","Εισάγετε διεύθυνση");
-    		return;
-    	}
-    	
-    	if(!checkFloor(FloorField.getText())) {
-    		showDialog("","Εισάγετε όροφο");
-    		return;
-    	}
-    	
-    	if(!checkBell(BellField.getText())) {
-    		showDialog("","Εισάγετε κουδούνι");
-    		return; 
-    		}
-    	
-	
-    	
-	hideObjects();
-	
-	progress.setVisible(true);
-	progress.setProgress(-10);
-	Timeline timer = new Timeline(
-            new KeyFrame(Duration.seconds(3),
-               new EventHandler<ActionEvent>() {
-
-            @Override
-        	public void handle(ActionEvent event) {
-            	progress.setProgress(100);
-	
-    		}
-        }));
-	timer.setCycleCount(1);
-	timer.play();
-		
-	db.clearCart();
-
-}
-	
-private void hideObjects() {
-	NameField.setVisible(false);
-	TelephoneField.setVisible(false);
-	EmailField.setVisible(false);
-	AddressField.setVisible(false);
-	FloorField.setVisible(false);
-	BellField.setVisible(false);
-
-}
 	
 	
 	private boolean checkName(String Name) {
@@ -221,6 +156,37 @@ private void hideObjects() {
 	  	
 		//Συνεχίζει την πληρωμή
 		FinishButton.setOnAction(e -> {
+			
+			if(!checkName(NameField.getText())) {
+	    		showDialog("","Εισάγετε ονοματεπώνυμο");
+	    		return;
+	    	}
+	    	if(!checkTelephone(TelephoneField.getText())) {
+	    		showDialog("","Εισάγετε τηλέφωνο");
+	    		return;
+	    	
+	    	}
+	    	if(!checkEmail(EmailField.getText())) {
+	    		showDialog("","Εισάγετε κάποιο email");
+	    		return;
+	    	}
+	    	
+	    	
+	    	if(!checkAddress(AddressField.getText())) {
+	    		showDialog("","Εισάγετε διεύθυνση");
+	    		return;
+	    	}
+	    	
+	    	if(!checkFloor(FloorField.getText())) {
+	    		showDialog("","Εισάγετε όροφο");
+	    		return;
+	    	}
+	    	
+	    	if(!checkBell(BellField.getText())) {
+	    		showDialog("","Εισάγετε κουδούνι");
+	    		return; 
+	    		}
+			
 			if (CardRadioButton.isSelected()) {
 				//Πηγαίνει στην διαδικασία πληρωμής με  πιστωτική
 				Stage stage = (Stage)this.FinishButton.getScene().getWindow();
