@@ -1,6 +1,7 @@
 package application;
 
 import java.net.URL;
+import java.util.ArrayList;
 import java.util.HashSet;
 import java.util.ResourceBundle;
 import java.util.Set;
@@ -31,6 +32,7 @@ import javafx.scene.transform.Rotate;
 import javafx.stage.Stage;
 import javafx.util.Duration;
 import logic.DatabaseHandler;
+import logic.Order;
 import logic.Plate;
 import javafx.scene.control.ListView;
 import javafx.scene.control.Spinner;
@@ -111,6 +113,11 @@ public class MainScreenController implements Initializable {
 					window.setScene(scene);
 					Main.OpenedStage = window;
 					window.showAndWait();
+					Plate.platesInCart.clear();
+					ArrayList<Order> orders = database.getCart();
+					for (Order order : orders) {
+						Plate.platesInCart.add(new Plate(order));
+					}
 				} catch(Exception e1) {
 					e1.printStackTrace();
 					System.out.println(e1.getMessage());
@@ -134,6 +141,11 @@ public class MainScreenController implements Initializable {
 			window.setScene(scene);
 			Main.OpenedStage = window;
 			window.showAndWait();
+			Plate.platesInCart.clear();
+			ArrayList<Order> orders = database.getCart();
+			for (Order order : orders) {
+				Plate.platesInCart.add(new Plate(order));
+			}
 		} catch(Exception e1) {
 			e1.printStackTrace();
 			System.out.println(e1.getMessage());

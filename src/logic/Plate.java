@@ -71,4 +71,16 @@ public class Plate {
 		this.imagePath = imagePath;
 		this.category = category;
 	}
+
+	public Plate(Order order) {
+		this.plateID = -1;
+		this.plateName = order.getproion();
+		this.description = "";
+		this.price = Double.parseDouble(order.gettimi());
+		this.imagePath = "";
+		this.category = "";
+		this.quantity = Integer.parseInt(order.getposotita());
+	}
 }
+
+
